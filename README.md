@@ -15,9 +15,13 @@ Specifically, we leverage **multi-layer aggregation** to integrate both low-leve
 ##  Overall Architecture
 
 
-![System Architecture](./figure1.png)
+![System Architecture](./figures/figure1.png)
 
 ---
+
+## Detection Results on the development data
+
+![System Architecture](./figures/figure3.png)
 
 ## Main Challenges
 
@@ -51,7 +55,7 @@ Specifically, we leverage **multi-layer aggregation** to integrate both low-leve
   - Clean noise
   - Clean machine sounds
 
-![System Architecture](./figure2.png)
+![System Architecture](./figures/figure2.png)
 
 ---
 
