@@ -1,4 +1,4 @@
-# 2025 Dcase Task2 : First-Shot Unsupervised Anomalous Sound Detection
+# 2025 Dcase Task2 : Self-Supervised Anomalous Sound Detection
 
 ## Overview
 
