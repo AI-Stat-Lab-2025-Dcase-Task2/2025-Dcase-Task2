@@ -138,6 +138,3 @@ We apply **LoRA** to both transformer layers and the **Layer Aggregation MLP**, 
 
 
 ---
-
-## Code
-
