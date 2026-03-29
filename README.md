@@ -1,5 +1,4 @@
-# 2025-Dcase-Task2
-# DCASE 2025 Task 2  
+# 2025 Dcase Task2
 ## First-Shot Unsupervised Anomalous Sound Detection
 
 ## Overview
@@ -10,7 +9,24 @@ To tackle this, we propose a **two-stage training framework** built on **self-su
 
 Specifically, we leverage **multi-layer aggregation** to integrate both low-level acoustic patterns and high-level Information, enabling richer and more robust audio representations. Furthermore, we incorporate **Center Loss alongside ArcFace Loss** to enforce compact intra-class distributions while increasing inter-class distance, which is critical for distance-based anomaly detection.
 
+
+[Our Technical Report](https://dcase.community/documents/challenge2025/technical_reports/DCASE2025_Kim_92_t2.pdf)
+
+---
+
+
+## Key Contributions
+
+- Two-stage training for domain adaptation
+- Multi-layer feature aggregation
+- Hybrid loss (ArcFace + Center Loss)
+- Pseudo-labeling for missing labels
+- Efficient fine-tuning & Regularization via LoRA
+
+---
+
 ##  Overall Architecture
+
 
 ![System Architecture](./figure1.png)
 
@@ -19,17 +35,19 @@ Specifically, we leverage **multi-layer aggregation** to integrate both low-leve
 ## Main Challenges
 
 1. **Self-Supervised Learning Constraint**  
-   - No abnormal data available during training
-
-2. **Data Scarcity (Target Domain)**  
-   - Limited 2025 data for some attribute(class)
+   - Only normal data is available for training  
+   - The model must detect anomalies without explicit abnormal examples
+   - 
+2. **Data Scarcity**  
+   - Limited 2025 data for some attributes (classes)
 
 3. **Domain Shift Problem**  
    - Training: Source : Target = 99 : 1  
    - Test : Source : Target = 1 : 1
+   - Significant distribution mismatch between training and evaluation 
 
-4. **Missing Labels**  
-   - Some data missed attribute information
+4. **Missing Attribute Labels**  
+   - A portion of the training data misses attribute annotations  
 
 ---
 
@@ -45,6 +63,8 @@ Specifically, we leverage **multi-layer aggregation** to integrate both low-leve
 - **Additional Data**
   - Clean noise
   - Clean machine sounds
+
+![System Architecture](./figure2.png)
 
 ---
 
@@ -81,13 +101,7 @@ To capture both fine-grained and global audio characteristics, we aggregate repr
 
 ---
 
-### 4. Attentive Statistics Pooling
-- Converts variable-length sequence → fixed embedding
-- Captures both global and local temporal features
-
----
-
-### 5. Loss Function Design
+### 4. Loss Function Design
 
 To optimize the embedding space for anomaly detection, we combine:
 
@@ -103,7 +117,7 @@ Result:
 
 ---
 
-### 6. Pseudo-Labeling
+### 5. Pseudo-Labeling
 
 To utilize data without attribute labels, we apply pseudo-labeling:
 
@@ -117,32 +131,15 @@ This allows unlabeled data to contribute to supervised training.
 
 ---
 
-### 7. LoRA for Efficient Fine-Tuning & Regularization
+### 6. LoRA for Efficient Fine-Tuning & Regularization
 
 We apply **LoRA** to both transformer layers and the **Layer Aggregation MLP**, which we identified as a major parameter bottleneck (~99M parameters).
 
 - Reduces trainable parameters  
 - Prevents overfitting under limited data
 
----
-
-### 9. Domain Shift Handling
-
-- **SMOTE**
-- Balances normal data distribution
 
 ---
 
-
-## Key Contributions
-
-- Two-stage training for domain adaptation
-- Multi-layer feature aggregation
-- Hybrid loss (ArcFace + Center Loss)
-- Pseudo-labeling for missing labels
-- Efficient fine-tuning via LoRA
-
----
-
-## Project Structure
+## Code
 
