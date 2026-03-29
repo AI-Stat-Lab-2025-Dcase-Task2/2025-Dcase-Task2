@@ -1,5 +1,4 @@
-# 2025 Dcase Task2
-## First-Shot Unsupervised Anomalous Sound Detection
+# 2025 Dcase Task2 : First-Shot Unsupervised Anomalous Sound Detection
 
 ## Overview
 
@@ -12,18 +11,6 @@ Specifically, we leverage **multi-layer aggregation** to integrate both low-leve
 
 [Our Technical Report](https://dcase.community/documents/challenge2025/technical_reports/DCASE2025_Kim_92_t2.pdf)
 
----
-
-
-## Key Contributions
-
-- Two-stage training for domain adaptation
-- Multi-layer feature aggregation
-- Hybrid loss (ArcFace + Center Loss)
-- Pseudo-labeling for missing labels
-- Efficient fine-tuning & Regularization via LoRA
-
----
 
 ##  Overall Architecture
 
@@ -65,6 +52,17 @@ Specifically, we leverage **multi-layer aggregation** to integrate both low-leve
   - Clean machine sounds
 
 ![System Architecture](./figure2.png)
+
+---
+
+
+## Key Contributions
+
+- Two-stage training for domain adaptation
+- Multi-layer feature aggregation
+- Hybrid loss (ArcFace + Center Loss)
+- Pseudo-labeling for missing labels
+- Efficient fine-tuning & Regularization via LoRA
 
 ---
 
